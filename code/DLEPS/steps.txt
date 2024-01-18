@@ -1,0 +1,5 @@
+- Collect prostate cancer specific drugs - sort by popularity
+- Calculate fingerprints
+- Take the training set drugs, calculate fingerprints for them as well
+- Finaly, calcualte the tanimoto similarity between the drugs
+- The result now to be passed to the model
