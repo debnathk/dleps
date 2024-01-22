@@ -3,4 +3,9 @@
 - Take the training set drugs, calculate fingerprints for them as well (425 drugs)
     - Extract the SMILES for 425 drugs, load onto maple - Done!!!
 - Finaly, calculate the tanimoto similarity between the drugs - Done!!!
-- The result now to be passed to the model
+- Additionally, calculate the tanimoto similarity between each reference drugs
+- Merge the features to the existing model:
+    1) Merge the 18 features to the existing (56,56) space
+    2) Pass the 3072 fingerprints to DNN, convert to 56 features - then merge with (56,56) space
+    3) Pass the 18x3072 features to VAE - convert to 56 features - then merge with (56,56) space
+- Finished
