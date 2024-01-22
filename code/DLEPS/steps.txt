@@ -1,5 +1,6 @@
 - Collect prostate cancer specific drugs - sort by popularity - Done!!!
 - Calculate fingerprints - Pipeline is ready!!
 - Take the training set drugs, calculate fingerprints for them as well (425 drugs)
-- Finaly, calcualte the tanimoto similarity between the drugs
+    - Extract the SMILES for 425 drugs, load onto maple - Done!!!
+- Finaly, calculate the tanimoto similarity between the drugs
 - The result now to be passed to the model
