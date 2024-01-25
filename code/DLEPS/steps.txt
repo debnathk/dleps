@@ -11,6 +11,6 @@
 - Update - IC50 dataset downloaded from GDSC can be used to extract drugs targeted against PRAD (prostate cancer cell line) and use them as reference drugs - This will increase the similarity matrix size. The steps are as follows:
     1) Filter out drugs targeted against PRAD
     2) Check the availability of SMILES of those drugs in PubChem
-    3) Figure out how to filter out drugs based on effective IC50 measures
+    3) Filter out drugs based on effective IC50 measures - < 1uM in concentration
     4) Finally prepare the ssp
 - Similarly, train the model with updated ssp data get results - by monday.
