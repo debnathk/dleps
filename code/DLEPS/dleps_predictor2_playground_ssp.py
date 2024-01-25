@@ -93,7 +93,7 @@ class DLEPS(object):
         sequential = Model(inputs=visible_1, outputs=output_1)
         sequential.load_weights('../../data/sample_weights.h5')
         sequential.trainable = False
-        # conv1D
+        # ssp
         visible_1s = Input(shape=(18, 1))
         flaten_1s = Flatten()(visible_1s)
         dense_11s = Dense(1024, activation='relu')(flaten_1s)
@@ -107,6 +107,8 @@ class DLEPS(object):
         dense_15s = Dense(56, activation='relu')(drop_4s)
         output_1s = Dense(1, activation='linear')(dense_15s)
         sequential_s = Model(inputs=visible_1s, outputs=output_1s)
+        sequential_s.load_weights('../../data/ssp_weights.h5')
+        sequential_s.trainable = False
         output_vae = Lambda(sampling, output_shape=(56,), name='lambda')([z_mn, z_var])
         merge = concatenate([dense_15s, dense_15, output_vae])
         # interpretation model

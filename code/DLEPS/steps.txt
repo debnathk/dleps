@@ -8,4 +8,9 @@
     1) Pass the 425x18x1 dataset to an DNN, create 56 features - merge the 18 features to the existing (56,56) space
     2) Pass the 3072 fingerprints to DNN, convert to 56 features - then merge with (56,56) space
     3) Pass the 18x3072 features to VAE - convert to 56 features - then merge with (56,56) space
-- Finished
+- Update - IC50 dataset downloaded from GDSC can be used to extract drugs targeted against PRAD (prostate cancer cell line) and use them as reference drugs - This will increase the similarity matrix size. The steps are as follows:
+    1) Filter out drugs targeted against PRAD
+    2) Check the availability of SMILES of those drugs in PubChem
+    3) Figure out how to filter out drugs based on effective IC50 measures
+    4) Finally prepare the ssp
+- Similarly, train the model with updated ssp data get results - by monday.
