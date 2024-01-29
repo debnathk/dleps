@@ -1,3 +1,4 @@
+# Source: https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest-tutorial#section=How-PUG-REST-Works
 # Routines for extracting compound data from PubChem
 
 import requests
