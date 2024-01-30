@@ -25,9 +25,8 @@ def name2smiles(name):
         return canonical_smiles
     else:
         print(f"Request failed with status code {response.status_code}")
-        return None
     
-# Extracting canonical SMILES fro compound id (cid)    
+# Extracting canonical SMILES fro compound id (cid)
 def cid2smiles(cid):
     url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/CanonicalSMILES/XML"
 
@@ -48,4 +47,3 @@ def cid2smiles(cid):
         return canonical_smiles
     else:
         print(f"Request failed with status code {response.status_code}")
-        return None
