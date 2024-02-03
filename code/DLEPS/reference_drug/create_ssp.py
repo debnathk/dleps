@@ -15,7 +15,7 @@ for i in range(df_fgrps_train.shape[0]):
     for j in range(df_fgrps_ref.shape[0]):
         for m in range(df_fgrps_train.shape[1]):
             for n in range(df_fgrps_ref.shape[1]):
-                if df_fgrps_train[i][m] == df_fgrps_ref[j][n]:
+                if df_fgrps_train.iloc[i, m] == df_fgrps_ref.iloc[j, n]:
                     ssp[j][n] = 1
     ssp_list.append(ssp)
 
