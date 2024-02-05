@@ -12,10 +12,10 @@ echo "Date"
 date
 
 start_time=$(date +%s)
-
+pip install --user ray
 # Load the necessary modules
 # module purge
-module load cuda/12.3   # Change this to the appropriate CUDA version
+# module load cuda/12.3   # Change this to the appropriate CUDA version
 # module load cudnn/8.0.4   # Change this to the appropriate cuDNN version
 # module load anaconda/2020.11  # Change this to the appropriate Anaconda version
 
