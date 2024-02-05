@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=dleps
 #SBATCH --output output_ssp.log
+#SBATCH --error error_ssp.log
 #SBATCH --partition cpu
 #SBATCH --nodes 1
 #SBATCH --ntasks 1
-#SBATCH --cpus-per-task 4
+#SBATCH --cpus-per-task 24
 #SBATCH --mem 64G
-#SBATCH --time=12:00:00    # Set the maximum time your job will run (hh:mm:ss)
 
 echo "Date"
 date
@@ -27,6 +27,7 @@ module load cuda/12.3   # Change this to the appropriate CUDA version
 
 # Run your Python script
 # python create_data.py
+echo "Workspace is ready..Calculation is starting..."
 python create_ssp.py
 
 end_time=$(date +%s)
