@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import ray
 
 # Initialize Ray
 ray.init()
