@@ -27,7 +27,7 @@ module load cuda/12.3   # Change this to the appropriate CUDA version
 
 # Run your Python script
 # python create_data.py
-python create_ssp
+python create_ssp.py
 
 end_time=$(date +%s)
 elapsed_time=$((end_time - start_time))

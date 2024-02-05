@@ -10,11 +10,20 @@ df_fgrps_ref = pd.read_csv('fgrps_ref.csv')
 
 # Calculate ssp
 ssp_list = []
-for i in range(df_fgrps_train.shape[0]):
-    ssp = np.zeros((df_fgrps_ref.shape[0], df_fgrps_ref.shape[1]))
-    for j in range(df_fgrps_ref.shape[0]):
-        for m in range(df_fgrps_train.shape[1]):
-            for n in range(df_fgrps_ref.shape[1]):
+# for i in range(df_fgrps_train.shape[0]):
+#     ssp = np.zeros((df_fgrps_ref.shape[0], df_fgrps_ref.shape[1]))
+#     for j in range(df_fgrps_ref.shape[0]):
+#         for m in range(df_fgrps_train.shape[1]):
+#             for n in range(df_fgrps_ref.shape[1]):
+#                 if df_fgrps_train.iloc[i, m] == df_fgrps_ref.iloc[j, n]:
+#                     ssp[j][n] = 1
+#     ssp_list.append(ssp)
+
+for i in range(10):
+    ssp = np.zeros((10, 10))
+    for j in range(10):
+        for m in range(10):
+            for n in range(10):
                 if df_fgrps_train.iloc[i, m] == df_fgrps_ref.iloc[j, n]:
                     ssp[j][n] = 1
     ssp_list.append(ssp)
