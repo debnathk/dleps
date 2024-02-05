@@ -2,11 +2,11 @@ import numpy as np
 import pandas as pd
 
 
-root = 'code/DLEPS/dleps/code/DLEPS/reference_drug/'
+# root = 'code/DLEPS/dleps/code/DLEPS/reference_drug/'
 
 # Read fingerprints
-df_fgrps_train = pd.read_csv(root + 'fgrps_train.csv')
-df_fgrps_ref = pd.read_csv(root + 'fgrps_ref.csv')
+df_fgrps_train = pd.read_csv('fgrps_train.csv')
+df_fgrps_ref = pd.read_csv('fgrps_ref.csv')
 
 # Calculate ssp
 ssp_list = []
