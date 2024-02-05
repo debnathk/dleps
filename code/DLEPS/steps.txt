@@ -12,7 +12,11 @@
     1) Filter out drugs targeted against PRAD - Done!!!
     3) Filter out drugs based on effective max_conc - < 10uM in concentration - Done!!!
     2) Check the availability of SMILES of those drugs in PubChem - 207 drugs found - Done!!!
-    4) Finally prepare the ssp -in Progress!!!
+    4) Finally prepare the ssp - Done!!!
         a) Reference drugs fingerprints dataset shape - (207, 3072)
         b) Training drugs fingerprints dataset shape - (475, 3072)
-        c) Combining these two, the shape of the ssp vector dataset would be - (475, 207, 3072) - This dataset should be fed to a pre-trained vae model - then fine tune the pretrained model for our use case.
+        c) Combining these two, the shape of the ssp vector dataset would be - (475, 207, 3072) - Done!!!
+    5) Create a vae model framework and train it with training drugs information - To be started next!!
+    6) Pass the prepared dataset through the pre-trained model:
+        a) Learn the (56, ) shape representation as latent phase representation
+        b) Merge the representation to the existing model - and get the prediction PCC 
