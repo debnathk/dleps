@@ -19,17 +19,28 @@ ssp_list = []
 #                     ssp[j][n] = 1
 #     ssp_list.append(ssp)
 
+# for i in range(df_fgrps_train.shape[0]):
 for i in range(10):
-    ssp = np.zeros((10, 10))
-    for j in range(10):
-        for m in range(10):
-            for n in range(10):
-                if df_fgrps_train.iloc[i, m] == df_fgrps_ref.iloc[j, n]:
-                    ssp[j][n] = 1
+    # Create a boolean array where True indicates matching elements
+    match_array = np.isin(df_fgrps_train[i], df_fgrps_ref)
+
+    # Use broadcasting to create the final matrix
+    ssp = match_array[:, np.newaxis] * np.ones_like(df_fgrps_ref, dtype=int)
     ssp_list.append(ssp)
 
 ssp_stack = np.stack(ssp_list)
-ssp_stack.shape
+
+# for i in range(10):
+#     ssp = np.zeros((10, 10))
+#     for j in range(10):
+#         for m in range(10):
+#             for n in range(10):
+#                 if df_fgrps_train.iloc[i, m] == df_fgrps_ref.iloc[j, n]:
+#                     ssp[j][n] = 1
+#     ssp_list.append(ssp)
+
+# ssp_stack = np.stack(ssp_list)
+# ssp_stack.shape
 
 # Split train, test
 TEST_SIZE = 75
@@ -57,4 +68,15 @@ print(ssp_train.shape)
 print(ssp_test.shape)
 
 
+# import numpy as np
 
+# a = np.array([[1, 2, 3],
+#               [4, 5, 6],
+#               [7, 8, 9]])
+
+# b = np.array([[1, 2, 3],
+#               [4, 5, 6]])
+
+# clist = []
+
+# print(result)
