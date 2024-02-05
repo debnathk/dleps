@@ -13,4 +13,6 @@
     3) Filter out drugs based on effective max_conc - < 10uM in concentration - Done!!!
     2) Check the availability of SMILES of those drugs in PubChem - 207 drugs found - Done!!!
     4) Finally prepare the ssp -in Progress!!!
-- Similarly, train the model with updated ssp data get results - by monday.
+        a) Reference drugs fingerprints dataset shape - (207, 3072)
+        b) Training drugs fingerprints dataset shape - (475, 3072)
+        c) Combining these two, the shape of the ssp vector dataset would be - (475, 207, 3072) - This dataset should be fed to a pre-trained vae model - then fine tune the pretrained model for our use case.
