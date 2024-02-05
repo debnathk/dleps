@@ -28,7 +28,8 @@ module load cuda/12.3   # Change this to the appropriate CUDA version
 # Run your Python script
 # python create_data.py
 echo "Workspace is ready..Calculation is starting..."
-python create_ssp.py
+# python create_ssp.py
+python ray_test.py
 
 end_time=$(date +%s)
 elapsed_time=$((end_time - start_time))
