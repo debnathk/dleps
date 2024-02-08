@@ -16,7 +16,11 @@
         a) Reference drugs fingerprints dataset shape - (207, 3072)
         b) Training drugs fingerprints dataset shape - (475, 3072)
         c) Combining these two, the shape of the ssp vector dataset would be - (475, 207, 3072) - Done!!!
-    5) Create a vae model framework and train it with training drugs information - To be started next!!
+    5) Create a vae model framework and train it with training drugs information - In progress...
+        a) Adopt VAE from fast.ai - To be started...
+        b) Create the training dataset - In progress...
+            i) Start with a subset of compounds from Pubchem database (source: https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/), calculate fingerprints, calculate similarity with reference drugs - In Progress
+            ii) Next, train the model with a larger set from that dataset
     6) Pass the prepared dataset through the pre-trained model:
         a) Learn the (56, ) shape representation as latent phase representation
         b) Merge the representation to the existing model - and get the prediction PCC 
