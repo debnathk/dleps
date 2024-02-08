@@ -8,7 +8,8 @@ from rdkit.Chem import Draw
 from rdkit.Chem import rdFingerprintGenerator
 from rdkit.Chem.Draw import SimilarityMaps
 
-root = 'code/DLEPS/dleps/code/DLEPS/reference_drug/'
+# root = 'code/DLEPS/dleps/code/DLEPS/reference_drug/'
+root = '/lustre/home/debnathk/dleps/code/DLEPS/reference_drug/'
 data = pd.read_csv(root + 'pubchem_5000.csv', header=None)
 data = data.drop(data.columns[0], axis=1)
 print(f'Total no of smiles: {len(data)}')
@@ -45,7 +46,7 @@ ssp_stack = np.stack(ssp_list).astype(int)
 ssp_stack.shape
 
 # Split train, test
-TEST_SIZE = 75
+TEST_SIZE = 1000
 ssp_train = ssp_stack[TEST_SIZE:]
 ssp_test = ssp_stack[:TEST_SIZE]
 
@@ -68,5 +69,3 @@ ssp_test = h5f['data'][:]
 
 print(ssp_train.shape)
 print(ssp_test.shape)
-
-print(ssp_train[:5])
