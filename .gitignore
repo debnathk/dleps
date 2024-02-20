@@ -3,3 +3,14 @@ data
 dleps.pptx
 ssp_data_train.h5
 ssp_data_test.h5
+code/DLEPS/reference_drug/CID-SMILES_50k.txt
+code/DLEPS/reference_drug/CID-SMILES_100k.txt
+code/DLEPS/reference_drug/CID-SMILES.txt
+code/DLEPS/reference_drug/fgrps_pubchem.csv
+code/DLEPS/reference_drug/fgrps_pubchem.csv
+code/DLEPS/reference_drug/pubchem_50k.csv
+code/DLEPS/reference_drug/pubchem_100k.csv
+code/DLEPS/reference_drug/training/fgrps_pubchem.csv
+code/DLEPS/reference_drug/training/fgrps_ref.csv
+code/DLEPS/reference_drug/training/pubchem_50k.csv
+code/DLEPS/reference_drug/fgrps_pubchem.csv

@@ -9,19 +9,27 @@ from rdkit.Chem import rdFingerprintGenerator
 from rdkit.Chem.Draw import SimilarityMaps
 
 # root = 'code/DLEPS/dleps/code/DLEPS/reference_drug/'
-root = '/lustre/home/debnathk/dleps/code/DLEPS/reference_drug/'
-data = pd.read_csv(root + 'pubchem_5000.csv', header=None)
+root = '/lustre/home/debnathk/dleps/code/DLEPS/reference_drug/training/'
+data = pd.read_csv(root + 'pubchem_50k.csv', header=None)
 data = data.drop(data.columns[0], axis=1)
 print(f'Total no of smiles: {len(data)}')
 
 # Standardize smiles
 molecules_pubchem = []
 for smiles in data[data.columns[0]]:
-    molecules_pubchem.append((Chem.MolFromSmiles(standardize(smiles))))
+    try:
+        molecules_pubchem.append((Chem.MolFromSmiles(standardize(smiles))))
+    except:
+        molecules_pubchem.append(smiles)
 
 # Creating fingerprints for all molecules
 rdkit_gen = rdFingerprintGenerator.GetRDKitFPGenerator(maxPath=7, fpSize=3072)
-fgrps_pubchem = [rdkit_gen.GetFingerprint(mol) for mol in molecules_pubchem]
+fgrps_pubchem = []
+for mol in molecules_pubchem:
+    try:
+        fgrps_pubchem.append(rdkit_gen.GetFingerprint(mol))
+    except:
+        print("rdkit Error occured")
 
 print('Shape of training set fingerprints:')
 print(np.array(fgrps_pubchem).shape)
@@ -43,10 +51,13 @@ for i in range(df_fgrps_pubchem.shape[0]):
     ssp_list.append(ssp)
 
 ssp_stack = np.stack(ssp_list).astype(int)
-ssp_stack.shape
+print(ssp_stack.shape)
+
+# Only keep columns with high variability
+
 
 # Split train, test
-TEST_SIZE = 1000
+TEST_SIZE = 5000
 ssp_train = ssp_stack[TEST_SIZE:]
 ssp_test = ssp_stack[:TEST_SIZE]
 
