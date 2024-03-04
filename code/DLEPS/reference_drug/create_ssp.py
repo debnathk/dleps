@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-root = 'code/DLEPS/dleps/code/DLEPS/reference_drug/'
+root = '/lustre/home/debnathk/dleps/code/DLEPS/reference_drug/'
 
 # Read fingerprints
 df_fgrps_train = pd.read_csv(root + 'fgrps_train.csv')
@@ -43,5 +43,3 @@ ssp_test = h5f['data'][:]
 
 print(ssp_train.shape)
 print(ssp_test.shape)
-
-print(ssp_train[:5])

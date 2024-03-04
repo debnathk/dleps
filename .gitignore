@@ -14,3 +14,14 @@ code/DLEPS/reference_drug/training/fgrps_pubchem.csv
 code/DLEPS/reference_drug/training/fgrps_ref.csv
 code/DLEPS/reference_drug/training/pubchem_50k.csv
 code/DLEPS/reference_drug/fgrps_pubchem.csv
+data_test.tfrecords
+data_train.tfrecords
+data.tfrecords
+code/DLEPS/reference_drug/error_creating_tfrecord.log
+code/DLEPS/reference_drug/output_creating_tfrecord.log
+code/DLEPS/reference_drug/ssp_data_train.tfrecords
+code/DLEPS/reference_drug/test.tfrecord
+code/DLEPS/reference_drug/vae_weights_refdrug
+code/DLEPS/reference_drug/vae_weights_refdrug.data-00000-of-00001
+code/DLEPS/reference_drug/vae_weights_refdrug.index
+code/DLEPS/reference_drug/__pycache__/creating_tfrecord.cpython-311.pyc

@@ -1,3 +1,5 @@
+Best weight for sequential model - sample_weights.h5
+Best weight for vae+sequential model - weights.best.sequential.hdf5
 - Collect prostate cancer specific drugs - sort by popularity - Done!!!
 - Calculate fingerprints - Pipeline is ready!!
 - Take the training set drugs, calculate fingerprints for them as well (425 drugs)
