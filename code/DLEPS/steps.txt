@@ -12,7 +12,7 @@ Best weight for vae+sequential model - weights.best.sequential.hdf5
     3) Pass the 18x3072 features to VAE - convert to 56 features - then merge with (56,56) space
 - Update - IC50 dataset downloaded from GDSC can be used to extract drugs targeted against PRAD (prostate cancer cell line) and use them as reference drugs - This will increase the similarity matrix size. The steps are as follows:
     1) Filter out drugs targeted against PRAD - Done!!!
-    3) Filter out drugs based on effective max_conc - < 10uM in concentration - Done!!!
+    3) Filter out drugs based on effective max_conc - < 10uM idusa@123n concentration - Done!!!
     2) Check the availability of SMILES of those drugs in PubChem - 207 drugs found - Done!!!
     4) Finally prepare the ssp - Done!!!
         a) Reference drugs fingerprints dataset shape - (207, 3072)
