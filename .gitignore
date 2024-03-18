@@ -25,3 +25,4 @@ code/DLEPS/reference_drug/vae_weights_refdrug
 code/DLEPS/reference_drug/vae_weights_refdrug.data-00000-of-00001
 code/DLEPS/reference_drug/vae_weights_refdrug.index
 code/DLEPS/reference_drug/__pycache__/creating_tfrecord.cpython-311.pyc
+code/DLEPS/reference_drug/ssp_data.h5
