@@ -21,7 +21,7 @@ python training_sequential.py \
     --train_labels_path y_MDA7_train.h5 \
     --test_data_path ../../data/gene_exp_data_test.h5 \
     --test_labels_path y_MDA7_test.h5 \
-    --checkpoint_filepath sequential_weights_mda7.h5 \
+    --checkpoint_filepath sequential_mda7_results/sequential_weights_mda7.h5 \
     --output_dir sequential_mda7_results \
     > "$output_log" 2> "$error_log"
 echo "Writing logs to the $log_folder/ folder...Done!" 
