@@ -1,0 +1,5 @@
+Date
+Thu Mar 21 11:23:13 AM EDT 2024
+/var/spool/slurm/d/job230041/slurm_script: line 21: $: command not found
+Writing logs to the refDNN_results/ folder...Done!
+Elapsed time: 0 seconds
