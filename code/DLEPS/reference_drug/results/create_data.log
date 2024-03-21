@@ -1,0 +1,9 @@
+Total no of smiles: 10000
+[01:13:08] WARNING: not removing hydrogen atom without neighbors
+[01:13:08] WARNING: not removing hydrogen atom without neighbors
+[01:13:08] WARNING: not removing hydrogen atom without neighbors
+[01:13:08] WARNING: not removing hydrogen atom without neighbors
+Shape of training set fingerprints:
+(10000, 3072)
+(9000, 207, 3072)
+(1000, 207, 3072)
