@@ -25,7 +25,7 @@ source activate /lustre/home/debnathk/dleps/.venv/bin/python
 # cd /path/to/your/python/script
 
 # Run your Python script
-python gvae_drug.py
+python cnn_target.py
 echo "Done!"
 
 end_time=$(date +%s)
