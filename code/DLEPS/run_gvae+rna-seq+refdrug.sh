@@ -1,16 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=gvae+rna-seq+refdrug
-#SBATCH --output output_merged_3.log
-#SBATCH --error error_merged_3.log
-#SBATCH --partition cpu
-#SBATCH --mem=128G  
-
 echo "Date"
 date
 
 start_time=$(date +%s)
 
-cd /lustre/home/debnathk/dleps/code/DLEPS
+# cd /lustre/home/debnathk/dleps/code/DLEPS
 
 # Load the necessary modules
 # module purge
@@ -19,13 +13,17 @@ cd /lustre/home/debnathk/dleps/code/DLEPS
 # module load anaconda/2020.11  # Change this to the appropriate Anaconda version
 
 # Activate your Python environment
-source activate /lustre/home/debnathk/dleps/.venv/bin/python
+# source activate /lustre/home/debnathk/dleps/.venv/bin/python
+# source activate /Users/debnathk/Appdata/Local/miniconda3/envs/dleps
+# c:\Users\debnathk\AppData\Local\miniconda3\envs\mitoenv
+eval "$(conda shell.bash hook)"
+conda activate dleps
 
 # Navigate to the directory containing your Python script
 # cd /path/to/your/python/script
 
 # Run your Python script
-# python gvae_drug.py
+python training_3.py
 echo "Done!"
 
 end_time=$(date +%s)

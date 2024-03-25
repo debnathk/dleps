@@ -76,7 +76,7 @@ class MoleculeVAE():
         h = Convolution1D(9, 9, activation = 'relu', name='conv_1')(x)
         h = Convolution1D(9, 9, activation = 'relu', name='conv_2')(h)
         h = Convolution1D(10, 11, activation = 'relu', name='conv_3')(h)
-        h = Flatten(name='flatten_1')(h)
+        h = Flatten(name='flatten_11')(h)
         h = Dense(435, activation = 'relu', name='dense_1')(h)
 
         z_mean = Dense(latent_rep_size, name='z_mean', activation = 'linear')(h)
@@ -89,7 +89,7 @@ class MoleculeVAE():
         h = Convolution1D(9, 9, activation = 'relu', name='conv_1')(x)
         h = Convolution1D(9, 9, activation = 'relu', name='conv_2')(h)
         h = Convolution1D(10, 11, activation = 'relu', name='conv_3')(h)
-        h = Flatten(name='flatten_1')(h)
+        h = Flatten(name='flatten_11')(h)
         h = Dense(435, activation = 'relu', name='dense_1')(h)
 
         def sampling(args):
