@@ -1,0 +1,7 @@
+['BindingDB Ligand Name' 'ChEMBL ID of Ligand' 'DrugBank ID of Ligand'
+ 'ZINC ID of Ligand' 'Ligand SMILES' 'Target Name'
+ 'BindingDB Target Chain Sequence' 'Link to Ligand in BindingDB'
+ 'Link to Target in BindingDB' 'Link to Ligand-Target Pair in BindingDB'
+ 'PDB ID(s) for Ligand-Target Complex'
+ 'Target Source Organism According to Curator or DataSource' 'IC50 (nM)'
+ 'pIC50']

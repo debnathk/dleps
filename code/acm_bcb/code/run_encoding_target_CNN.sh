@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=bindingdb_gvae
-#SBATCH --output output_bindingdb_gvae.log
-#SBATCH --error error_bindingdb_gvae.log
+#SBATCH --job-name=bindingdb_encoding_target_CNN
+#SBATCH --output output_bindingdb_encoding_target_CNN.log
+#SBATCH --error error_bindingdb_encoding_target_CNN.log
 #SBATCH --partition cpu
 #SBATCH --mem=128G  
 
@@ -25,7 +25,7 @@ source activate /lustre/home/debnathk/dleps/.venv/bin/python
 # cd /path/to/your/python/script
 
 # Run your Python script
-python cnn_target.py
+python encoding_target_CNN.py
 echo "Done!"
 
 end_time=$(date +%s)
