@@ -875,3 +875,5 @@ To enable the following instructions: AVX2 AVX512F FMA, in other operations, reb
 [19:32:00] Explicit valence for atom # 27 H, 2, is greater than permitted
 [19:32:00] non-ring atom 1 marked aromatic
 [19:32:01] Explicit valence for atom # 1 N, 4, is greater than permitted
+/var/spool/slurm/d/job230785/slurm_script: line 28: 2302452 Killed                  python gvae_drug.py
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=230785.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.
