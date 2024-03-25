@@ -30,3 +30,4 @@ code/BindingDB_All_202403.tsv
 code/BindingDB_IC50_human.csv
 code/BindingDB_IC50.csv
 code/DLEPS/reference_drug/results/refdrug_vae.weights.h5
+code/DLEPS/test.weights.hdf5
