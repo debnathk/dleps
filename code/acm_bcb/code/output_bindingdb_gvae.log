@@ -1,4 +1,14 @@
 Date
-Sun Mar 24 07:29:19 PM EDT 2024
+Mon Mar 25 11:39:51 AM EDT 2024
+Index(['BindingDB Ligand Name', 'ChEMBL ID of Ligand', 'DrugBank ID of Ligand',
+       'ZINC ID of Ligand', 'Ligand SMILES', 'Target Name',
+       'BindingDB Target Chain Sequence', 'Link to Ligand in BindingDB',
+       'Link to Target in BindingDB',
+       'Link to Ligand-Target Pair in BindingDB',
+       'PDB ID(s) for Ligand-Target Complex',
+       'Target Source Organism According to Curator or DataSource',
+       'IC50 (nM)'],
+      dtype='object')
+925498
 Done!
-Elapsed time: 23972 seconds
+Elapsed time: 152 seconds
