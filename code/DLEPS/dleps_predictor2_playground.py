@@ -17,8 +17,9 @@ import numpy as np
 import pandas as pd
 import nltk
 import h5py
+import keras
 import tensorflow as tf
-from keras.layers import Input, Dense, Dropout, Lambda, Flatten, concatenate, Conv1D, GlobalMaxPooling1D
+from keras.layers import Input, Dense, Dropout, Lambda, Flatten, concatenate, Conv1D, GlobalMaxPooling1D, Layer
 from keras.models import Model, Sequential
 from keras import backend as K
 from keras import optimizers, regularizers
@@ -27,6 +28,7 @@ from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 from utils import get_fp, to1hot
 import molecule_vae
 from molecule_vae import get_zinc_tokenizer
+from refdrug_vae import VAE
 import zinc_grammar
 from vectorized_cmap import computecs
 
@@ -93,24 +95,40 @@ class DLEPS(object):
         sequential = Model(inputs=visible_1, outputs=output_1)
         sequential.load_weights('../../data/sample_weights.h5')
         sequential.trainable = False
-        # conv1D
-        # dropout = 0.4
-        # visible_1 = Input(shape=(978, 2))
-        # conv1D_1 = Conv1D(64, 2, activation='relu')(visible_1)
-        # maxpooling_1 = GlobalMaxPooling1D()(conv1D_1)
-        # dense_1 = Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.00001))(maxpooling_1)
-        # drop_1 = Dropout(dropout)(dense_1)
-        # dense_2 = Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.00001))(drop_1)
-        # drop_2 = Dropout(dropout)(dense_2)
-        # dense_3 = Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.00001))(drop_2)
-        # drop_3 = Dropout(dropout)(dense_3)
-        # dense_4 = Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.00001))(drop_3)
-        # drop_4 = Dropout(dropout)(dense_4)
-        # output = Dense(1, activation='linear')(drop_4)
-        # model = Model(inputs=visible_1, outputs=output)
-        # model.load_weights('../../data/best_weights_conv1d.h5')
+
+        # refdrug
+        class Sampling(Layer):
+            """Uses (z_mean, z_log_var) to sample z, the vector encoding a digit."""
+
+            def call(self, inputs):
+                z_mean, z_log_var = inputs
+                batch = tf.shape(z_mean)[0]
+                dim = tf.shape(z_mean)[1]
+                epsilon = tf.random.normal(shape=(batch, dim))
+                return z_mean + tf.exp(0.5 * z_log_var) * epsilon
+
+        latent_dim = 56
+        encoder_inputs = keras.Input(shape=(207, 3072))
+        # Add dense layer
+        x = Conv1D(32, 3, activation="relu", strides=2, padding="same")(encoder_inputs)
+        x = Conv1D(64, 3, activation="relu", strides=2, padding="same")(x)
+        x = Flatten()(x)
+        x = Dense(16, activation="relu")(x)
+        z_mean = Dense(latent_dim, name="z_mean")(x)
+        z_log_var = Dense(latent_dim, name="z_log_var")(x)
+        z = Sampling()([z_mean, z_log_var])
+        encoder = keras.Model(encoder_inputs, [z_mean, z_log_var, z], name="encoder")
+
+        refdrug_vae = VAE(encoder=None, decoder=None)
+        refdrug_vae.load_weights('reference_drug/results/refdrug_vae.weights.h5')
+        refdrug_vae.trainable = False
+
+        z_mean, z_log_var = refdrug_vae.encoder.output
+        output_refdrug_vae = Lambda(sampling, output_shape=(56,), name='lambda')([z_mean, z_log_var])
+
+
         output_vae = Lambda(sampling, output_shape=(56,), name='lambda')([z_mn, z_var])
-        merge = concatenate([dense_15, output_vae])
+        merge = concatenate([dense_15, output_vae, output_refdrug_vae])
         # interpretation model
         # hidden1 = Dense(10, activation='relu')(merge)
         # hidden2 = Dense(10, activation='relu')(hidden1)
@@ -125,7 +143,7 @@ class DLEPS(object):
         x = Dense(512,activation='relu', kernel_regularizer=regularizers.l2(0.00001))(x)
         x = Dropout(0.4)(x)
         outputs = Dense(1, activation='linear')(x)
-        model = Model(inputs=[visible_1, grammar_model.vae.encoderMV.input], outputs = outputs)
+        model = Model(inputs=[visible_1, grammar_model.vae.encoderMV.input, refdrug_vae.encoder.input], outputs = outputs)
         
         return model
     

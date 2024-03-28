@@ -27,15 +27,17 @@ h5f2 = h5py.File('../../data/y_train.h5', 'r')
 y_train = h5f2['data'][:]
 h5f2 = h5py.File('../../data/y_test.h5', 'r')
 y_test = h5f2['data'][:]
-# h5f3 = h5py.File('../../data/gene_exp_data_test.h5', 'r')
-# seq_test = h5f3['data'][:]
-# h5f4 = h5py.File('../../data/gene_exp_labels_test.h5', 'r')
-# seq_labels = h5f4['data'][:]
+h5f3 = h5py.File('reference_drug/data/ssp_data_train.h5', 'r')
+refdrug_train = h5f3['data'][:]
+h5f4 = h5py.File('reference_drug/data/ssp_data_test.h5', 'r')
+refdrug_test = h5f4['data'][:]
 
 print(vae_train.shape)
 print(vae_test.shape)
 print(seq_train.shape)
 print(seq_test.shape)
+print(refdrug_train.shape)
+print(refdrug_test.shape)
 print(y_train.shape)
 print(y_test.shape)
 
@@ -47,19 +49,19 @@ model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['mae'])
 from keras.callbacks import ModelCheckpoint
 # filepath = "weights.best.sequential.hdf5" - best
 # filepath = "weights.best.sample.hdf5"
-filepath = "test.weights.hdf5"
+filepath = "all_test.weights.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
 
 # Use the final model to get a single output
 epochs = 1000
 batch_size = 50
 early_stopping = EarlyStopping(monitor='val_mae', patience=10)
-history = model.fit([seq_train, vae_train], y_train, batch_size=batch_size, epochs=epochs, callbacks=[checkpoint, early_stopping], validation_data=([seq_test, vae_test], y_test))
+history = model.fit([seq_train, vae_train, refdrug_train], y_train, batch_size=batch_size, epochs=epochs, callbacks=[checkpoint, early_stopping], validation_data=([seq_test, vae_test, refdrug_test], y_test))
 
-model.load_weights("test.weights.hdf5")
+model.load_weights("all_test.weights.hdf5")
 
 # Evaluate the model on the test set
-results = model.evaluate([seq_test, vae_test], y_test)
+results = model.evaluate([seq_test, vae_test, refdrug_test], y_test)
 print("Test Loss:", results[0])
 print("Test MAE:", results[1])
 
